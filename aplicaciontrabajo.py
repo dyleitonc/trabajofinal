@@ -22,6 +22,7 @@ tf.config.set_visible_devices([], 'GPU')
 
 st.set_page_config(page_title="Dataset Forest Covertype", layout="wide")
 
+@st.cache_data
 def cargar_datos():
     """Carga el dataset covertype y lo formatea."""
     covertype = fetch_ucirepo(id=31)
@@ -71,10 +72,12 @@ model_paths = {
 modelo_seleccionado = st.sidebar.selectbox("Seleccione el modelo de clasificación", list(model_paths.keys()))
 
 # Cargar el modelo seleccionado
+
 @st.cache_resource
 def cargar_modelo(ruta):
     with gzip.open(ruta, "rb") as file:
         return pickle.load(file)
+
 
 modelo = cargar_modelo(model_paths[modelo_seleccionado])
 
