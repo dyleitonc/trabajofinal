@@ -207,7 +207,7 @@ elif capitulo == "Modelos de Clasificación":
     model__n_neighbors: 3 \n
     model__p': 1 \n
     """)
-    img0 = Image.open("model_KNN.png")
+    img0 = Image.open("model_KNN.jpg")
     st.image(img0, caption="Características del Modelo KNN", use_container_width=True)
 
     variables_report = pd.DataFrame({
