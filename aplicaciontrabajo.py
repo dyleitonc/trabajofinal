@@ -14,7 +14,6 @@ from sklearn.metrics import accuracy_score, classification_report
 from sklearn.model_selection import train_test_split
 from PIL import Image
 import tensorflow as tf
-pip install plotly
 
 tf.config.set_visible_devices([], 'GPU')
 
