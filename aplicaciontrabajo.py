@@ -260,8 +260,8 @@ elif capitulo == "Modelos de Clasificación":
     - learning_rate: 0.0006558000197767294
     """)
     
-    img = Image.open("Imagen_rendimiento_modelo_redes.jpeg")
-    img1 = Image.open("Estructura_modelo_redes.png")
+    img = Image.open("Imagen_rendimiento_modelo_redes.jpg")
+    img1 = Image.open("Estructura_modelo_redes.jpg")
     
     st.image(img, caption="Gráfico de entrenamiento y validación del modelo", use_container_width=True)
     st.image(img1, caption="Estructura Modelo Red Neuronal", use_container_width=True)
