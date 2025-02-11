@@ -1,3 +1,2 @@
 tensorflow
 scikit-learn
-!pip install plotly
