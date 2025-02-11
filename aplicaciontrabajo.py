@@ -193,54 +193,79 @@ elif capitulo == "Visualización de Datos":
         st.pyplot(fig)
     
 elif capitulo == "Modelos de Clasificación":
+    st.header("🤖 Modelos de Clasificación")
+    
+    st.subheader("📌 Información General de los Modelos")
+    st.write("A continuación, se presentan los modelos de clasificación utilizados en el análisis.")
+    
+    mismodelos = {
+        "K-Nearest Neighbors": {
+            "Descripción": "Clasificador basado en la cercanía de los puntos en el espacio de características.",
+            "Parámetros": {
+                "n_neighbors": 3,
+                "p": 1
+            },
+            "Precisión en test": 0.94
+        },
+        "Red Neuronal": {
+            "Descripción": "Modelo basado en redes neuronales profundas para la clasificación de datos.",
+            "Parámetros": {
+                "depth": 3,
+                "epochs": 5,
+                "num_units": 80,
+                "optimizer": "rmsprop",
+                "activation": "tanh",
+                "batch_size": 56,
+                "learning_rate": 0.0006558000197767294
+            },
+            "Precisión en test": "Disponible en gráfico"
+        }
+    }
+    
+    for modelo, info in mismodelos.items():
+        st.subheader(f"📌 {modelo}")
+        st.write(f"**Descripción:** {info['Descripción']}")
+        st.write("**Parámetros:**")
+        for param, value in info["Parámetros"].items():
+            st.write(f"- {param}: {value}")
+        st.write(f"**Precisión en test:** {info['Precisión en test']}")
+    
     st.header("🤖 K- Nearest Neighbors")
     st.write("Información del modelo previamente entrenado por el método K Nearest Neighbors.")
-
     
-    #Información del modelo
     st.write("📊 Parámetros del Modelo")
     st.write("""
     **Entrenando modelo: KNN** \n
-    Fitting 5 folds for each of 14 candidates, totalling 70 fits. \n
+    Fitting 5 folds para cada uno de los 14 candidatos, totalizando 70 ajustes. \n
     Precisión en test: 0.94 \n
     **Mejores hiperparámetros:** \n
-    model__n_neighbors: 3 \n
-    model__p': 1 \n
+    - model__n_neighbors: 3 \n
+    - model__p: 1 \n
     """)
-    img0 = Image.open("model_KNN.jpg")
-    st.image(img0, caption="Características del Modelo KNN", use_container_width=True)
-
-    variables_report = pd.DataFrame({
-        " ": ["1","2","3"," ","accuracy","macro avg","weighted avg"],
-        "Precision":["0.94","0.95","0.95"," "," ","0.95"],
-        "Recall":["0.94","0.95","0.95"," "," ","0.95"],
-        "f1-score":["0.94","0.95","0.95","0.95"," ","0.95","0.95"],
-        "support":["63552","84991","25761"," ","174304"]
-    })
     
-    st.write("### Reporte de Clasificación")
-    st.table(variables_report)
+    img0 = Image.open("model_KNN.png")
+    st.image(img0, caption="Características del Modelo KNN", use_container_width=True)
     
     st.header("🧠 Modelo Redes Neuronales")
-    st.write("Información del modelo previamente entrenado por el método redes neuronales.")
-
-    st.write("""**Mejores hiperparámetros encontrados:** \n
-    **depth:** 3 \n
-    **epochs:** 5 \n
-    **num_units:** 80 \n
-    **optimizer:** 'rmsprop' \n
-    **activation:** 'tanh' \n
-    **batch_size:** 56 \n
-    **learning_rate:** 0.0006558000197767294
+    st.write("Información del modelo previamente entrenado por el método de redes neuronales.")
     
+    st.write("""
+    **Mejores hiperparámetros encontrados:** \n
+    - depth: 3 \n
+    - epochs: 5 \n
+    - num_units: 80 \n
+    - optimizer: 'rmsprop' \n
+    - activation: 'tanh' \n
+    - batch_size: 56 \n
+    - learning_rate: 0.0006558000197767294
     """)
     
     img = Image.open("Imagen_rendimiento_modelo_redes.jpeg")
     img1 = Image.open("Estructura_modelo_redes.png")
     
     st.image(img, caption="Gráfico de entrenamiento y validación del modelo", use_container_width=True)
-    st.write("Estructura del modelo:")
     st.image(img1, caption="Estructura Modelo Red Neuronal", use_container_width=True)
+    
     # Definir las características que necesita el modelo
 
 feature_names = [
